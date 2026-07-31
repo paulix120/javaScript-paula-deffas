@@ -29,8 +29,17 @@ app.get("/ruta3/:nombre/:apellido", (req, res)=>{
         <h3>Numero: ${numero}</h3>
         `)
     
+    })
+
+app.get("/saludo/:nombre", (req, rest) =>{
+    const nameUsuario =req.params.nombre || "aprendiz"
+    rest.send (`<h1>Hola, ${nameUsuario}, bienvenido </h1>
+        
+        `)
+
+})
 
 
 app.listen(port, () => { 
-console.log( `SERVIDOR: https//localhost:${port} `);
+    console.log( `SERVIDOR: https//localhost:${port} `);
 }); 
