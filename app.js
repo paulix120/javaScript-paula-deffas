@@ -28,8 +28,7 @@ app.get("/ruta3/:nombre/:apellido", (req, res)=>{
         <P>Pagina: ${pagina}</p>
         <h3>Numero: ${numero}</h3>
         `)
-
- })
+    
 
 
 app.listen(port, () => { 
