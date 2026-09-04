@@ -1,9 +1,26 @@
 [
-    {
+  {
     "id": 1,
-     "nombre": "Paula",
+    "nombre": "Paula",
     "correo": "paula@example.com",
     "imagen": "/imagenes/mifoto.png",
     "clave": "123456"
-    }
+  },
+  {
+    "imagen": "sin imagen"
+  },
+  {
+    "id": "3",
+    "nombre": "paula",
+    "correo": "paula@gmail",
+    "clave": "545452",
+    "imagen": "/misImagenes/1788551358146.avif"
+  },
+  {
+    "id": "3",
+    "nombre": "paula",
+    "correo": "paula@gmail",
+    "clave": "545452",
+    "imagen": "/misImagenes/1788551358352.avif"
+  }
 ]
