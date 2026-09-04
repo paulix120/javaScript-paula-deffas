@@ -1,4 +1,9 @@
-{
-    "id": 1, "nombre": "Paula", 
-    "correo": "paula@example.com","imagen": "/"
-}
+[
+    {
+    "id": 1,
+     "nombre": "Paula",
+    "correo": "paula@example.com",
+    "imagen": "/imagenes/mifoto.png",
+    "clave": "123456"
+    }
+]
