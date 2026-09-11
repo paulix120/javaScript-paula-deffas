@@ -22,5 +22,17 @@
     "correo": "paula@gmail",
     "clave": "545452",
     "imagen": "/misImagenes/1788551358352.avif"
+  },
+  {
+    "nombre": "paula",
+    "edad": 18,
+    "coreo": "paulaalejandra@gmail.com",
+    "imagen": "sin imagen"
+  },
+  {
+    "nombre": "paula",
+    "edad": 18,
+    "coreo": "paulaalejandra@gmail.com",
+    "imagen": "sin imagen"
   }
 ]

@@ -7,6 +7,14 @@ const port = process.env.PORT || 3030;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//middleware propoios
+//este middleware
+app.use((req, res, next) => {
+  console.log(`Tiempo milisegundos: ${Date.now()}`)
+  console.log(`Fecha: ${new Date().toLocaleString()}`)
+  next();
+})
+
 // Módulos para manejo de archivos
 const sistemaArchivo = require('fs');
 const ruta = require('path');
