@@ -2,10 +2,17 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const port = process.env.PORT || 3030;
+const jwtoken = require("jsonwebtoken");
+//importaciones de middlewares
+const registroMiddleware = require('./middleware/registromiddleware');
+const manejadorErrores = require('./middleware/manejadorErrores');  
+const autenticacion = require('./middleware/autenticacion');
 
 // Middlewares para parsear el body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(registroMiddleware);
+
 
 //middleware propoios
 //este middleware
@@ -94,7 +101,17 @@ app.delete("/api/aprendices/:id", (req, res) => {
   res.status(200).json({
     "mensaje": "Eliminar aprendiz"
   });
-});            
+});    
+
+//error provocado
+app.get("/error", (req, res, next) => {
+  next(new Error("Error intencional de mi app"));
+})
+
+//ruta protegida
+app.get("/rutaProtegida",autenticacion, (req, res) => {
+  res.status(200).json({ mensaje: "Esta es mi ruta protegida !!!" });
+})
 
 app.post("/rutaJson", (req, res) => {
   const todosDatos = req.body;
@@ -106,12 +123,43 @@ app.post("/rutaJson", (req, res) => {
   }
 });
 
+//login inicio de sesion
+
+app.post("/login", (req, res) => {
+ 
+  //simular datos de la bd
+  const usuarioBD = {
+    "usuario": "paula",
+    "clave": "1234"
+  }
+  const {usuario,clave} = req.body;
+
+  //validar si son correctos
+   if (usuario !== usuarioBD.usuario || clave !== usuarioBD.clave) {
+    res.status(401).json({ mensaje: "Usuario y clave incorrectos" });
+   }
+  //crear variable para almacenar token
+  const token = jwtoken.sign(
+    //datos  usuario
+    { "usuario": req.usuario },
+    //generar token
+    process.env.JWT_SECRET,
+    { expiresIn: "1h" }
+  )
+  res.json({token});
+});
+
+
 app.post("/rutaFormulario", (req, res) => {
   const todosDatos = req.body;
   const programa = req.body.programa;
   res.json({ todosDatos: todosDatos, Miprograma: programa });
 });
 
+
+app.use(manejadorErrores)
+
+
 app.listen(port, () => {
   console.log(`SERVIDOR: http://localhost:${port}`);
-});
+})
