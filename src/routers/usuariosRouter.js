@@ -1,12 +1,14 @@
-//ruta de usuarios 
-const {Router}= require ("express")
+//ruta de usuarios
+const {Router}= require("express")
 const enrutador = Router()
-const mostrarRutaUsuario = require ("../controllers/rutaUsuariosController")
-const mostrarRutaUsuarios = require("../controllers/rutaUsuariosController")
+const {mostrarRutaUsuarios, registrarController, loginController} = require("../controllers/rutaUsuariosController")
 
-//FUNCION (req,res) dbeer ir en el controlador 
-enrutador.get("/listado",mostrarRutaUsuarios)
 
-//Funcion(req,res) dbeer ir en el controlador
+//FUNCION (req,res) debe ir en el controlador 
+enrutador.get("/listado", mostrarRutaUsuarios)
+//FUNCION (req,res) debe ir en el controlador
+enrutador.get("/registrar", registrarController)
+enrutador.get("/login", loginController)
 
-module.exports = enrutador 
+
+module.exports = enrutador

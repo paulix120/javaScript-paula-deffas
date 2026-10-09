@@ -7,6 +7,6 @@ const usuariosRouter =  require("./usuariosRouter")
 enrutador.use("/rutaPrueba", pruebaRouter)
 
 enrutador.use("/usuarios" , usuariosRouter)
-//enrutador.use("/usuarios", usuariosRouter)
 
-module.exports = enrutador;
+
+module.exports = enrutador
